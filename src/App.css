@@ -1,12 +1,18 @@
 .App {
   text-align: center;
   font-family: Arial, sans-serif;
+
+}
+
+h1 {
+  color: darkslateblue;
 }
 
 .main-content {
   display: flex;
   justify-content: space-between;
   padding: 20px;
+  background-color: #3c3c6d;
 }
 
 .book-list {
@@ -19,6 +25,7 @@
 
 .book-card {
   border: 1px solid #ddd;
+  box-shadow: #218838;
   padding: 15px;
   background-color: #fff;
   transition: transform 0.2s;
@@ -97,7 +104,7 @@
 
 .search-bar button {
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #9a9be7;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -105,7 +112,7 @@
 }
 
 .search-bar button:hover {
-  background-color: #218838;
+  background-color: #556ac5;
 }
 
 
