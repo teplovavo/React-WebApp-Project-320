@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+Book Finder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Book Finder, a simple app I built to help people find books easily and learn more about them. It's built using HTML, CSS, JavaScript, React, and useReducer for state management. It was a really fun project that helped me learn a lot, and I hope you enjoy using it!
 
-## Available Scripts
+Technologies Used
 
-In the project directory, you can run:
+React: The main framework used for building the UI components.
+JavaScript, HTML, CSS: These are the usual suspects—handling the basics of how the app works, looks, and behaves.
+Axios: Used to make API requests to Google Books.
+React Responsive Carousel: Added a cool carousel to display popular books, just to make the UI a bit more interesting!
 
-### `npm start`
+How It Works
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You can search for books, see some details about them, and even add books to a cart (just for fun, we aren't actually buying anything here 😉). You can remove items from the cart, and I've added a carousel at the top with some popular books that load up right away to give you some ideas.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Features
 
-### `npm test`
+Search Books: Type in a title, and it'll pull from Google Books' API.
+Book Carousel: Shows some preloaded, popular books for quick browsing.
+Book Details: Click on a book to see more information about it—like the author, description, and more.
+Cart: Add and remove books to your cart. Again, this is just for fun, but it's a cool way to explore different books.
+UseReducer Hook: Manages the state of the app in an effective way.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Live Link
+The app is hosted on Netlify: Link to Book Finder Live. Stay tuned for updates.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+How to Use It
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone the repo.
+Run npm install to install the dependencies.
+Run npm start to start the development server.
+The app will be available at http://localhost:3000.
 
-### `npm run eject`
+Unsolved Problems
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+I want to add a real database to store user preferences and the cart items persistently.
+It'd be cool to add more fancy UI components, like a filter option for genres or a user login.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+What's Next?
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+I'm thinking of maybe adding LocalStorage so your cart items can persist even if you refresh the page. I also want to get this deployed and possibly add more interesting books to the initial carousel.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+Thanks for checking it out, and feel free to fork, clone, and play around with it! 😊
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+GitHub Repo Link
+https://github.com/teplovavo/React-WebApp-Project-320
