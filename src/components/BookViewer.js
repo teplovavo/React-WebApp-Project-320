@@ -4,6 +4,7 @@ const BookViewer = ({ bookId }) => {
   const [bookData, setBookData] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Fetch book data when bookId changes
   useEffect(() => {
     const fetchBookData = async () => {
       try {
@@ -19,6 +20,7 @@ const BookViewer = ({ bookId }) => {
     if (bookId) fetchBookData();
   }, [bookId]);
 
+  // Render loading message or book details
   if (loading) return <div>Loading...</div>;
   if (!bookData) return <div>No book details available.</div>;
 

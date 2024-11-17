@@ -7,6 +7,8 @@ import BookViewer from './components/BookViewer';
 import Cart from './components/Cart';
 import BookCarousel from './components/BookCarousel';
 
+
+
 // Initial state for the reducer
 const initialState = {
   books: [],
@@ -14,6 +16,8 @@ const initialState = {
   cartItems: [],
   status: 'idle' 
 };
+
+
 
 // Reducer function to manage application state
 const reducer = (state, action) => {
@@ -35,6 +39,8 @@ const reducer = (state, action) => {
   }
 };
 
+
+
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -55,20 +61,20 @@ const App = () => {
         dispatch({ type: 'SET_BOOKS', payload: allBooks }); // Set books in state after successful fetch
       } catch (error) {
         console.error('Error fetching default books:', error);
-        dispatch({ type: 'SET_FAILED' }); // Set failed status if there's an error
+        dispatch({ type: 'SET_FAILED' }); // Set failed status if theres an error
       }
     };
     fetchDefaultBooks();
   }, []);
 
-  // Function to handle searching books
+  // Function to handle searching books..
   const handleSearch = async (query) => {
     try {
       dispatch({ type: 'SET_LOADING' }); // Set loading state before fetching
       const apiKey = process.env.REACT_APP_API_KEY;
       const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}`);
       if (response.data.items) {
-        dispatch({ type: 'SET_BOOKS', payload: response.data.items }); // Update state with the search results
+        dispatch({ type: 'SET_BOOKS', payload: response.data.items }); // Update state with the search results!
       } else {
         dispatch({ type: 'SET_BOOKS', payload: [] }); // No results found
       }

@@ -9,7 +9,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
       {cartItems.length === 0 ? (
         <p>Cart is empty</p>
       ) : (
-        <div>
+        <div> 
           {cartItems.map(item => (
             <div key={item.id} className="cart-item">
               <div>

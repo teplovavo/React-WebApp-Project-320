@@ -6,8 +6,7 @@ const SearchBar = ({ onSearch }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     if (query) {
-      onSearch(query); 
-      
+      onSearch(query);
       setQuery(''); // Clear input field after searching
     }
   };
