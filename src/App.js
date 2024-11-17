@@ -67,6 +67,7 @@ const App = () => {
     fetchDefaultBooks();
   }, []);
 
+  
   // Function to handle searching books..
   const handleSearch = async (query) => {
     try {
