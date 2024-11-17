@@ -107,3 +107,21 @@
 .search-bar button:hover {
   background-color: #218838;
 }
+
+
+
+/* ***************************************************************App.css or Carousel.css */
+.carousel-wrapper {
+  max-width: 300px;  
+  margin: 0 auto;    
+}
+
+.carousel .slide img {
+  height: 450px; 
+  object-fit: cover;  
+}
+
+.carousel .legend {
+  background: rgba(0, 0, 0, 0.5);  
+  color: #fff; 
+}

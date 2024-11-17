@@ -5,16 +5,17 @@ import SearchBar from './components/SearchBar';
 import BookList from './components/BookList';
 import BookViewer from './components/BookViewer';
 import Cart from './components/Cart';
+import BookCarousel from './components/BookCarousel';
 
-// Начальное состояние
+// Initial state for the reducer
 const initialState = {
   books: [],
   selectedBookId: null,
   cartItems: [],
-  status: 'idle' // idle | loading | succeeded | failed
+  status: 'idle' 
 };
 
-// Редьюсер для управления состоянием
+// Reducer function to manage application state
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_BOOKS':
@@ -37,37 +38,58 @@ const reducer = (state, action) => {
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // Effect to fetch default books when the component mounts
   useEffect(() => {
-    // Загрузка книг по умолчанию
     const defaultBooks = ['Twilight', 'Rich Dad Poor Dad', 'The Great Gatsby', 'Anna Karenina'];
     const fetchDefaultBooks = async () => {
       try {
-        dispatch({ type: 'SET_LOADING' });
+        dispatch({ type: 'SET_LOADING' }); // Set loading state before fetching
         const allBooks = [];
+        const apiKey = process.env.REACT_APP_API_KEY; // API key .env
         for (let book of defaultBooks) {
-          const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${book}`);
+          const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${book}&key=${apiKey}`);
           if (response.data.items) {
-            allBooks.push(...response.data.items);
+            allBooks.push(...response.data.items); // Add fetched books to the list
           }
         }
-        dispatch({ type: 'SET_BOOKS', payload: allBooks });
+        dispatch({ type: 'SET_BOOKS', payload: allBooks }); // Set books in state after successful fetch
       } catch (error) {
         console.error('Error fetching default books:', error);
-        dispatch({ type: 'SET_FAILED' });
+        dispatch({ type: 'SET_FAILED' }); // Set failed status if there's an error
       }
     };
     fetchDefaultBooks();
   }, []);
 
+  // Function to handle searching books
+  const handleSearch = async (query) => {
+    try {
+      dispatch({ type: 'SET_LOADING' }); // Set loading state before fetching
+      const apiKey = process.env.REACT_APP_API_KEY;
+      const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}`);
+      if (response.data.items) {
+        dispatch({ type: 'SET_BOOKS', payload: response.data.items }); // Update state with the search results
+      } else {
+        dispatch({ type: 'SET_BOOKS', payload: [] }); // No results found
+      }
+    } catch (error) {
+      console.error('Error searching books:', error);
+      dispatch({ type: 'SET_FAILED' }); // Set failed status if there's an error
+    }
+  };
+
   return (
     <div className="App">
       <h1>Book Finder</h1>
+      
+      {/* Search bar for finding books by user input */}
+      <SearchBar onSearch={handleSearch} />
 
-      {/* Строка поиска */}
-      <SearchBar setBooks={(books) => dispatch({ type: 'SET_BOOKS', payload: books })} setStatus={(status) => dispatch({ type: status })} />
+      {/* Adding the carousel to display popular books */}
+      {state.books.length > 0 && <BookCarousel books={state.books.slice(0, 5)} />} {/* Displaying the first 5 books in a carousel */}
 
       <div className="main-content">
-        {/* Список книг */}
+        {/* Displaying the list of books */}
         <BookList
           books={state.books}
           status={state.status}
@@ -75,10 +97,10 @@ const App = () => {
           addToCart={(book) => dispatch({ type: 'ADD_TO_CART', payload: book })}
         />
 
-        {/* Просмотр выбранной книги */}
+        {/* Displaying book details when a book is selected */}
         {state.selectedBookId && <BookViewer bookId={state.selectedBookId} />}
-
-        {/* Корзина */}
+        
+        {/* Displaying the shopping cart */}
         <Cart cartItems={state.cartItems} removeFromCart={(id) => dispatch({ type: 'REMOVE_FROM_CART', payload: id })} />
       </div>
     </div>

@@ -1,26 +1,14 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
-const SearchBar = ({ setBooks, setStatus }) => {
+const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
     if (query) {
-      try {
-        setStatus('loading');
-        const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
-        if (response.data.items) {
-          setBooks(response.data.items);
-        } else {
-          setBooks([]);
-        }
-        setStatus('succeeded');
-      } catch (error) {
-        console.error('Error fetching books:', error);
-        setStatus('failed');
-      }
-      setQuery('');
+      onSearch(query); 
+      
+      setQuery(''); // Clear input field after searching
     }
   };
 
