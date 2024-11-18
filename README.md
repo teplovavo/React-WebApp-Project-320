@@ -23,7 +23,8 @@ UseReducer Hook: Manages the state of the app in an effective way.
 
 Live Link
 The app is hosted on Netlify: Link to Book Finder Live. Stay tuned for updates.
-https://app.netlify.com/sites/teplova-react-book-app/
+[https://app.netlify.com/sites/teplova-react-book-app/]
+(https://teplova-react-book-app.netlify.app)
 
 
 How to Use It
